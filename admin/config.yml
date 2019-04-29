@@ -1,0 +1,100 @@
+backend:
+  name: github
+  repo: yicheng340/isomerpages-govtech
+  branch: master
+
+publish_mode: editorial_workflow
+media_folder: "images"
+
+site_url: https://naughty-poincare-a280dc.netlify.com/
+logo_url: https://naughty-poincare-a280dc.netlify.com/images/logo_govtech_hort.gif
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    label_singular: "Page"
+    folder: "pages"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "{{title}}"
+
+    fields:
+      - label: "Layout"
+        name: "layout"
+        widget: "select"
+        default: "simple-page"
+        options:
+          - {label: "Simple Page", value: "simple-page"}
+          - {label: "Left Nav", value: "leftnav-page-content"}
+          - {label: "Board of Directors", value: "board-of-directors"}
+          - {label: "Contact Us", value: "contact-us"}
+        hint: "What kind of page would you like?"
+      - {label: "Title", name: "title", widget: "string", hint: "Title for the page"}
+      - {label: "Permalink", name: "permalink", widget: "string", hint: "URL this release will be at ugh how do I explain this"}
+      - {label: "Breadcrumb", name: "breadcrumb", widget: "string", hint: "A human-readable path leading to this Page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "technews"
+    label: "Tech News"
+    label_singular: "Tech News"
+    folder: "news/technews/_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    
+    # preview_path: "news/press-releases/{{permalink}}"
+    
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string", hint: "Title for the press release"}
+      - {label: "Date", name: "date", widget: "datetime", hint: "Publication date for this release"}
+      - {label: "Permalink", name: "permalink", widget: "string", hint: "URL this release will be at ugh how do I explain this"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "media-releases"
+    label: "Media Releases"
+    label_singular: "Media Release"
+    folder: "news/media-releases/_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    
+    # preview_path: "news/forum-letter-replies/{{permalink}}"
+    
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Title", name: "title", widget: "string", hint: "Title for the letter reply"}
+      - {label: "Date", name: "date", widget: "datetime", "Publication date for this reply"}
+      - {label: "Permalink", name: "permalink", widget: "string", hint: "URL this release will be at ugh how do I explain this"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "data"
+    label: "Site Settings"
+    files:
+      - label: "Contact Info"
+        name: "contact-us"
+        file: "_data/contact-us.yaml"
+        fields:
+          - label: "Locations"
+            name: "locations"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Address", name: "address", widget: "text"}
+              - {label: "Google Maps Link", name: "find-directions", widget: "string"}
+              - label: "Operating Hours"
+                name: "operating-hours"
+                widget: "list"
+                fields:
+                  - {label: "Days", name: "days", widget: "string"}
+                  - {label: "Time", name: "time", widget: "string"}
+                  - {label: "Addtional Info", name: "description", widget: "text", required: false}
+          - label: "Contact Details"
+            name: "column"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Details"
+                name: "content"
+                widget: "list"
+                fields:
+                  - {label: "Tel No./Email", name: "line", widget: "string", hint: "If you have an email, put (email) after the actual email"}
+          - {label: "Image", name: "image-url", widget: "string", required: false}
