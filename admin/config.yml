@@ -37,7 +37,7 @@ collections:
   - name: "technews"
     label: "Tech News"
     label_singular: "Tech News"
-    folder: "news/technews/_posts"
+    folder: "media/technews/_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     
@@ -53,7 +53,7 @@ collections:
   - name: "media-releases"
     label: "Media Releases"
     label_singular: "Media Release"
-    folder: "news/media-releases/_posts"
+    folder: "media/media-releases/_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     
@@ -71,7 +71,7 @@ collections:
     files:
       - label: "Contact Info"
         name: "contact-us"
-        file: "_data/contact-us.yaml"
+        file: "_data/contact-us.yml"
         fields:
           - label: "Locations"
             name: "locations"
